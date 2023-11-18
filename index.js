@@ -23,7 +23,6 @@ function createSquare() {
     div.style.height = "50px";
     div.style.background = "white";
     div.id = (Squares.length - 1).toString();
-    div.onclick = squareClick;
     div.onmouseenter = squareEnter;
     div.onmouseleave = squareLeave;
     return div;
@@ -40,7 +39,7 @@ function fillBoard(size) {
     }
 }
 
-function squareClick(event) {
+function increaseShade(event) {
     // Update Square object
     const index = parseInt(event.target.id);
     Squares[index].clickCount++;
@@ -58,9 +57,7 @@ function squareClick(event) {
 }
 
 function squareEnter(event) {
-    // Update div object
-    const square = document.getElementById(event.target.id);
-    square.style.background = "blue";
+    increaseShade(event);
 }
 
 function squareLeave(event) {
