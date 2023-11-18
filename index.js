@@ -31,6 +31,11 @@ function createSquare() {
 function fillBoard(size) {
     Squares = [];
     const board = document.getElementById("board");
+    // Remove previous board content
+    while (board.firstChild) {
+        board.firstChild.remove()
+    }
+    // Fill the board
     for (let index = 0; index < size; index++) {
         const sq = createSquare();
         board.appendChild(sq);
