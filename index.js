@@ -1,7 +1,11 @@
 let Squares = []
 class Square {
     clickCount = 0;
+    shadeIndex = 0;
+    shade = SHADES[0];
 }
+
+const SHADES = ["#ffffff", "#bfbfbf", "#7f7f7f", "#404040", "#000000"];
 
 main();
 
@@ -32,7 +36,15 @@ function fillBoard(size) {
 
 function squareClicked(event) {
     console.log("clicked", event);
+    // Update Square object
     const index = parseInt(event.target.id);
     Squares[index].clickCount++;
-    console.log("squareClicked: ", index, Squares[index].clickCount);
+    Squares[index].shadeIndex = Math.min(Squares[index].shadeIndex + 1, SHADES.length - 1);
+    Squares[index].shade = SHADES[Squares[index].shadeIndex];
+    console.log("squareClicked: ", index, Squares[index]);
+
+    // Update div object
+    const square = document.getElementById(event.target.id);
+    square.style.background = Squares[index].shade;
+    console.log(square);
 }
