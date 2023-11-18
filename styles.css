@@ -1,14 +1,13 @@
-/*
 * {
-    border: 2px solid red;
+    /*border: 2px solid red;*/
+    text-align: center;
 }
-*/
 
 .board {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 10%;
+    margin: 2%;
     position: relative;
     /*width: 20%; */
     height: 0;
