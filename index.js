@@ -4,6 +4,7 @@ class Square {
     shadeIndex = 0;
     shade = SHADES[0];
 }
+const DEBUG = false;
 
 const SHADES = ["#ffffff", "#bfbfbf", "#7f7f7f", "#404040", "#000000"];
 
@@ -33,24 +34,27 @@ function fillBoard(size) {
     const board = document.getElementById("board");
     for (let index = 0; index < size; index++) {
         const sq = createSquare();
-        console.log(index, sq);
         board.appendChild(sq);
+        if (DEBUG)
+            console.log(index, sq);
     }
 }
 
 function squareClick(event) {
-    console.log("clicked", event);
     // Update Square object
     const index = parseInt(event.target.id);
     Squares[index].clickCount++;
     Squares[index].shadeIndex = Math.min(Squares[index].shadeIndex + 1, SHADES.length - 1);
     Squares[index].shade = SHADES[Squares[index].shadeIndex];
-    console.log("squareClick: ", index, Squares[index]);
 
     // Update div object
     const square = document.getElementById(event.target.id);
     square.style.background = Squares[index].shade;
-    console.log(square);
+    if (DEBUG) {
+        console.log("clicked", event);
+        console.log("squareClick: ", index, Squares[index]);
+        console.log(square);
+    }
 }
 
 function squareEnter(event) {
