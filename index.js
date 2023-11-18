@@ -16,11 +16,14 @@ function main() {
 function createSquare() {
     Squares.push(new Square());
     var div = document.createElement("div");
+
     div.style.width = "50px"
     div.style.height = "50px";
-    div.style.background = "black";
+    div.style.background = "white";
     div.id = (Squares.length - 1).toString();
-    div.onclick = squareClicked;
+    div.onclick = squareClick;
+    div.onmouseenter = squareEnter;
+    div.onmouseleave = squareLeave;
     return div;
 }
 
@@ -34,17 +37,30 @@ function fillBoard(size) {
     }
 }
 
-function squareClicked(event) {
+function squareClick(event) {
     console.log("clicked", event);
     // Update Square object
     const index = parseInt(event.target.id);
     Squares[index].clickCount++;
     Squares[index].shadeIndex = Math.min(Squares[index].shadeIndex + 1, SHADES.length - 1);
     Squares[index].shade = SHADES[Squares[index].shadeIndex];
-    console.log("squareClicked: ", index, Squares[index]);
+    console.log("squareClick: ", index, Squares[index]);
 
     // Update div object
     const square = document.getElementById(event.target.id);
     square.style.background = Squares[index].shade;
     console.log(square);
+}
+
+function squareEnter(event) {
+    // Update div object
+    const square = document.getElementById(event.target.id);
+    square.style.background = "blue";
+}
+
+function squareLeave(event) {
+    // Update div object
+    const square = document.getElementById(event.target.id);
+    const index = parseInt(event.target.id);
+    square.style.background = Squares[index].shade;
 }
