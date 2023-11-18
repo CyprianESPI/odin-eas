@@ -1,10 +1,13 @@
+/*
 * {
     border: 2px solid red;
 }
+*/
 
 .board {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin: 10%;
+    aspect-ratio: 1 / 1;
 }

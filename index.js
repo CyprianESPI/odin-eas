@@ -10,14 +10,15 @@ const SHADES = ["#ffffff", "#bfbfbf", "#7f7f7f", "#404040", "#000000"];
 main();
 
 function main() {
-    fillBoard(16)
+    fillBoard(16 * 16)
 }
 
 function createSquare() {
     Squares.push(new Square());
     var div = document.createElement("div");
-
-    div.style.width = "50px"
+    div.style.margin = "1px";
+    div.style.border = "2px solid black";
+    div.style.width = "50px";
     div.style.height = "50px";
     div.style.background = "white";
     div.id = (Squares.length - 1).toString();
